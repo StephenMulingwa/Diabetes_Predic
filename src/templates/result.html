@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction Result</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6 text-center">Diabetes Prediction Result</h1>
+        <div class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 max-w-md mx-auto">
+            <!-- Image -->
+            <div class="flex justify-center mb-6">
+                <img src="https://newsnetwork.mayoclinic.org/n7-mcnn/7bcc9724adf7b803/uploads/2015/01/shutterstock_162862109.jpg"
+                    alt="Health Image" class="rounded-lg shadow-md">
+            </div>
+            <!-- Prediction Result -->
+            <p class="text-center text-xl">
+                The prediction is: <strong class="text-blue-500">{{ prediction }}</strong>
+            </p>
+
+            <!-- Probability Message in a Box -->
+            <div class="bg-blue-50 p-5 rounded-lg text-center text-blue-900 shadow-md mb-6 border-l-4 border-blue-400">
+                <p class="text-lg font-semibold">
+                    <span class="{{ probability_class }}">{{ probability_message }}</span>
+                </p>
+                <p class="text-gray-700 text-sm mt-2">
+                    Your health matters! Stay informed and maintain a balanced lifestyle.
+                </p>
+                <p class="text-gray-500 text-xs mt-1 italic">
+                    *This is just a prediction. Always consult a healthcare professional for personalized advice.*
+                </p>
+            </div>
+
+
+
+
+
+
+
+
+            <!-- Health Tip -->
+            <div class="bg-blue-50 p-4 rounded-lg text-center text-blue-800 mb-6">
+                <p class="text-sm font-medium">Maintain high Fiber-rich Foods and Stay Active</p>
+            </div>
+            <div class="text-center mt-6">
+                <a href="/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

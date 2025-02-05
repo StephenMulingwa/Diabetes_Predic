@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6 text-center">Diabetes Prediction</h1>
+        <form action="/predict" method="post" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <label for="highbp" class="block text-gray-700 text-sm font-bold mb-2">High Blood Pressure (0 = No or
+                    1 = Yes):</label>
+                <input type="number" name="HighBP" id="highbp"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="highchol" class="block text-gray-700 text-sm font-bold mb-2">High Cholesterol (0 =No or
+                    1 = Yes):</label>
+                <input type="number" name="HighChol" id="highchol"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="cholcheck" class="block text-gray-700 text-sm font-bold mb-2">Cholesterol Check (Cholesterol
+                    Check in 5 years: 0 = No or
+                    1 = Yes):</label>
+                <input type="number" name="CholCheck" id="cholcheck"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="bmi" class="block text-gray-700 text-sm font-bold mb-2">Body Mass Index (BMI=weight(kg) /
+                    [height(m)]^2):</label>
+                <input type="number" step="any" name="BMI" id="bmi"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="smoker" class="block text-gray-700 text-sm font-bold mb-2">Smoker (0 = No 1 = Yes):</label>
+                <input type="number" name="Smoker" id="smoker"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="stroke" class="block text-gray-700 text-sm font-bold mb-2">Stroke ((Ever Been told) you had
+                    a stroke. 0 = No 1 = Yes):</label>
+                <input type="number" name="Stroke" id="stroke"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="heartdisease" class="block text-gray-700 text-sm font-bold mb-2">Heart Disease or Attack (0
+                    = No 1 = Yes):</label>
+                <input type="number" name="HeartDiseaseorAttack" id="heartdisease"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="physactivity" class="block text-gray-700 text-sm font-bold mb-2">Physical Activity ((Do you
+                    exercise) 0 = No 1 = Yes1):</label>
+                <input type="number" name="PhysActivity" id="physactivity"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="fruits" class="block text-gray-700 text-sm font-bold mb-2">Fruits (Consume Fruit 1 or more
+                    times per day? 0 = No 1 = Yes):</label>
+                <input type="number" name="Fruits" id="fruits"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="veggies" class="block text-gray-700 text-sm font-bold mb-2">Vegetables (Consume Vegetables 1
+                    or more times per day? 0 = No 1 = Yes):</label>
+                <input type="number" name="Veggies" id="veggies"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="alcohol" class="block text-gray-700 text-sm font-bold mb-2">Heavy Alcohol Consumption (0 =
+                    No 1 = Yes):</label>
+                <input type="number" name="HvyAlcoholConsump" id="alcohol"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="anyhealthcare" class="block text-gray-700 text-sm font-bold mb-2">Any Healthcare (Have any
+                    kind of health care coverage, including health insurance, prepaid plans such as SHA? 0 = No 1 =
+                    Yes):</label>
+                <input type="number" name="AnyHealthcare" id="anyhealthcare"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="nodocbccost" class="block text-gray-700 text-sm font-bold mb-2">No Doctor Because of Cost
+                    (Was there a time in the past 12 months when you needed to see a doctor but could not because of
+                    cost?
+                    0 = No 1 = Yes):</label>
+                <input type="number" name="NoDocbcCost" id="nodocbccost"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="genhlth" class="block text-gray-700 text-sm font-bold mb-2">General Health (Would you say
+                    that in general your health is scale 1-5:
+                    1 = excellent 2 = very good 3 = good 4 = fair 5 = poor):</label>
+                <input type="number" name="GenHlth" id="genhlth"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="menthlth" class="block text-gray-700 text-sm font-bold mb-2">Mental Health (Now thinking
+                    about your mental health, which includes stress, depression, and problems with emotions, how many
+                    days
+                    during the past 30 days was your mental health not good? (0-30 days)):</label>
+                <input type="number" name="MentHlth" id="menthlth"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="physhlth" class="block text-gray-700 text-sm font-bold mb-2">Physical Health (Now thinking
+                    about your physical health, which includes physical illness and injury, for how many days during the
+                    past
+                    30 days was your physical health not good? (0-30 days)):</label>
+                <input type="number" name="PhysHlth" id="physhlth"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="diffwalk" class="block text-gray-700 text-sm font-bold mb-2">Difficulty Walking (0Do you
+                    have serious difficulty walking or climbing stairs? 0 = No 1 = Yes):</label>
+                <input type="number" name="DiffWalk" id="diffwalk"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="sex" class="block text-gray-700 text-sm font-bold mb-2">Sex (0 = Female 1 = Male):</label>
+                <input type="number" name="Sex" id="sex"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="age" class="block text-gray-700 text-sm font-bold mb-2">Age(Select your age bracket: 1 =
+                    18-24 years, 2 = 25-29 years, 3 = 30-34 years, 4 = 35-39 years, 5 = 40-44 years, 6 = 45-49 years, 7
+                    = 50-54 years, 8
+                    = 55-59 years, 9 = 60-64 years, 10 = 65-69 years, 11 = 70-74 years, 12 = 75-79 years, and 13 = 80
+                    years or older.):</label>
+                <input type="number" name="Age" id="age"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="education" class="block text-gray-700 text-sm font-bold mb-2">Education (1 = Never attended
+                    school, 2 = Primary school, 3 = Secondary School, 4 = Diploma/Degree, 5 =Masters, and 6 =
+                    PhD):</label>
+                <input type="number" name="Education" id="education"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="mb-4">
+                <label for="income" class="block text-gray-700 text-sm font-bold mb-2">Income (1 = Less than Kshs10,000,
+                    2 = Kshs10,000 to Kshs25,000, 3 = Kshs25,000 to Kshs50,000, 4 = Kshs50,000 to Kshs80,000, 5 =
+                    Kshs80,000 to Kshs150,000, 6 = Kshs150,000 to Kshs250,000, 7 = Kshs250,000 to Kshs500,000, and 8 =
+                    Kshs500,000 or more.):</label>
+                <input type="number" name="Income" id="income"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    required>
+            </div>
+            <div class="flex items-center justify-between">
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Predict
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
